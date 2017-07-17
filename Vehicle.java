@@ -1,6 +1,8 @@
 import java.util.Map;
 import java.util.HashMap;
-
+/**
+ * Container class for vehicle fields
+ */
 public class Vehicle {
 
     //Provided fields
@@ -111,14 +113,18 @@ public class Vehicle {
         return fuelMap;
     }
 
+    //Uses the above functions 
     public void setSpecification() {
+        //Get all the HashMaps
         Map<String, String> carTypeMap = buildCarTypeMap();
         Map<String, String> doorMap = buildDoorMap();
         Map<String, String> transmissionMap = buildTransmissionMap();
         Map<String, String> fuelMap = buildFuelMap();
+        //Resolve to specifications
         carType = carTypeMap.get(String.valueOf(sipp.charAt(0)));
         doors = doorMap.get(String.valueOf(sipp.charAt(1)));
         transmission = transmissionMap.get(String.valueOf(sipp.charAt(2)));
+        //Split up the content of the Fuel/Air specification
         String[] airFuel = fuelMap.get(String.valueOf(sipp.charAt(3))).split("/");
         fuel = airFuel[0];
         air = airFuel[1];

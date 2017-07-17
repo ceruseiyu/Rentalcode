@@ -106,7 +106,9 @@ public class VehicleTask {
 
     //Retrieve an array of vehicles from the external JSON API
     private Vehicle[] getVehicles(String urlString) {
+        //Create buffer to store the JSON string in
         StringBuffer stringBuf = new StringBuffer();
+        //Read in 1024 characters at a time
         char[] chars = new char[1024];
 
         URL url = null;
@@ -117,6 +119,7 @@ public class VehicleTask {
             System.exit(0);
         }
 
+        //Read characters into the StringBuffer from the URL stream
         BufferedReader readBuf = null;
         try{
             readBuf = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -129,6 +132,7 @@ public class VehicleTask {
             System.out.println("Unable to retrieve JSON from URL, aborting.");
             System.exit(0);
         }
+        //Collapse to string for processing with Google GSON
         String rawJSON = stringBuf.toString();
 
         Gson gson = new Gson();
